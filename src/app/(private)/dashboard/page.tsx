@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { useHeader } from '@/contexts/HeaderContext'
 import {
   BarChart,
   Bar,
@@ -59,27 +60,11 @@ export default function DashboardPage() {
     { nome: 'Recebido', valor: totalRecebido },
     { nome: 'Pendente', valor: totalPendente },
   ]
+ const { setTitle } = useHeader()
 
-  return (
-    <div style={{ padding: 20 }}>
-      <h1>Dashboard Financeiro</h1>
-
-      <div style={{ marginTop: 20 }}>
-        <p><strong>Total previsto:</strong> R$ {totalPrevisto.toFixed(2)}</p>
-        <p><strong>Total recebido:</strong> R$ {totalRecebido.toFixed(2)}</p>
-        <p><strong>Pendente:</strong> R$ {totalPendente.toFixed(2)}</p>
-      </div>
-
-      <div style={{ width: '100%', height: 300, marginTop: 40 }}>
-        <ResponsiveContainer>
-          <BarChart data={chartData}>
-            <XAxis dataKey="nome" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="valor" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  )
-}
+  useEffect(() => {
+    setTitle('Dashboard Financeiro')
+  }, [setTitle])}
+<div className="bg-red-600 text-white p-4 text-xl">
+  ATUALIZOU AGORA
+</div>

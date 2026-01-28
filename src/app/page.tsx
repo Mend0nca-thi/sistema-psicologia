@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ProtectedRoute } from '@/app/components/ProtectedRoute'
+import ProtectedRoute  from '@/components/auth/ProtectedRoute'
 
 export default function Home() {
   return (
