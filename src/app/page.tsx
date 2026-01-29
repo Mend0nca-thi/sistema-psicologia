@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image";
 import ProtectedRoute  from '@/components/auth/ProtectedRoute'
 
