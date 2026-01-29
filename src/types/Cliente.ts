@@ -1,3 +1,5 @@
+'use client'
+
 export type Cliente = {
   id: string
   nome: string
