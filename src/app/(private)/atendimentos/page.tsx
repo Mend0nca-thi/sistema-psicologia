@@ -1,5 +1,6 @@
 'use client'
 
+import { gerarLinkGoogleCalendar } from '@/lib/googleCalendar'
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 
@@ -204,8 +205,28 @@ const normalizado: Atendimento[] = (data as AtendimentoDB[]).map((a) => ({
             onChange={(e) => setObservacao(e.target.value)}
           />
 
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
-            Cadastrar atendimento
+          <button
+
+            onClick={() => {
+  if (!atendimentos.length) return
+
+  const a = atendimentos[0]
+
+  const inicio = new Date(a.data_atendimento)
+  const fim = new Date(inicio.getTime() + 60 * 60 * 1000)
+
+  const link = gerarLinkGoogleCalendar({
+    titulo: `Atendimento - ${a.cliente_nome ?? ''}`,
+    descricao: `Valor da consulta: R$ ${a.valor_consulta ?? ''}`,
+    dataInicio: inicio,
+    dataFim: fim,
+  })
+
+  window.open(link, '_blank')
+}}
+
+>
+  📅 Adicionar ao Google Calendar
           </button>
         </form>
 
