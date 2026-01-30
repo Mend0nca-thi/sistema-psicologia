@@ -17,6 +17,7 @@ export default function Sidebar() {
   return (
     <aside className="w-60 bg-white border-r p-4">
       <nav className="flex flex-col gap-2">
+
         <Link href="/dashboard" className={linkClass('/dashboard')}>
           Dashboard
         </Link>
@@ -32,6 +33,7 @@ export default function Sidebar() {
         <Link href="/relatorios" className={linkClass('/relatorios')}>
           Relatórios
         </Link>
+
       </nav>
     </aside>
   )
